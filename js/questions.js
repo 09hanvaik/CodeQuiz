@@ -10,9 +10,18 @@ var questionBank = [
         CorrectAnswer: "background colour"
     }
 
-]
+];
 
-var currentQuestionNumber = 0
+var currentQuestionNumber = 0;
+var timer 
+var correctSound = new Audio("assets/sfx/correct.wav");
+var incorrectSound = new Audio("assets/sfx/incorrect.wav")
+
+
+function startTimer(){
+    timer = setInterval(function () {document.getElementById("time").innerHTML -= 1}, 1000);;
+}
+
 
 function getRandom(arr){
     var n = Math.floor(Math.random() * arr.length);
@@ -25,9 +34,8 @@ function showQuestions(){
     document.getElementById("start-screen").style.display = 'none';
     document.getElementById("questionsContainer").style.display = 'block';
 }
-console.log(questionBank.length)
+
 function loopQuestions(){
-    console.log(currentQuestionNumber)
     
     //Reset the colour values after checking answer
     document.getElementById("optionOne").style.backgroundColor = "#563d7c";
@@ -43,22 +51,42 @@ function loopQuestions(){
         document.getElementById("optionThree").innerHTML = questionBank[currentQuestionNumber].Answers[2];
         document.getElementById("optionFour").innerHTML = questionBank[currentQuestionNumber].Answers[3];
     }
-    else{ //Hide Questions and show Endscreen with scores
-        document.getElementById("questionContainer").style.display = 'none';
-        document.getElementById("end-screen").style.display = 'block';
-    }
     
 }
 
 function checkAnswer(getButtonID){
-    
+
+    //if last question, then go to end score
+    if (currentQuestionNumber == (questionBank.length-1)){
+        showScore();
+    }
+
+    // if button is the correct answer then colour answer green and go to next question
     if (document.getElementById(getButtonID).textContent == questionBank[currentQuestionNumber].CorrectAnswer){
         document.getElementById(getButtonID).style.backgroundColor = "green";
+        correctSound.play();
+        currentQuestionNumber++;
+        setTimeout(loopQuestions, 300);
     }
-    else {
+    // if button is the wrong answer then colour answer red and go to next question
+    else if (document.getElementById(getButtonID).textContent != questionBank[currentQuestionNumber].CorrectAnswer){
         document.getElementById(getButtonID).style.backgroundColor = "red";
+        document.getElementById("time").innerHTML -= 10;
+        incorrectSound.play();
+        currentQuestionNumber++;
+        setTimeout(loopQuestions, 300);
     }
-    currentQuestionNumber++;
-    setTimeout(loopQuestions, 300);
+}
+   
+function storeScore(){
+    localStorage.setItem("score", document.getElementById("time").textContent)
+    localStorage.setItem("initial", document.getElementById("initials").textContent)
+    console.log(localStorage)
+}
     
+function showScore(){
+    document.getElementById("questionsContainer").style.display = 'none';
+    document.getElementById("end-screen").style.display = 'block';
+    clearTimeout(timer);
+    document.getElementById("final-score").innerHTML = document.getElementById("time").textContent;
 }
