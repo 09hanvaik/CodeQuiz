@@ -58,6 +58,7 @@ function checkAnswer(getButtonID){
 
     //if last question, then go to end score
     if (currentQuestionNumber == (questionBank.length-1)){
+        clearTimeout(timer);
         showScore();
     }
 
@@ -77,16 +78,21 @@ function checkAnswer(getButtonID){
         setTimeout(loopQuestions, 300);
     }
 }
-   
-function storeScore(){
-    localStorage.setItem("score", document.getElementById("time").textContent)
-    localStorage.setItem("initial", document.getElementById("initials").textContent)
-    console.log(localStorage)
-}
     
 function showScore(){
     document.getElementById("questionsContainer").style.display = 'none';
     document.getElementById("end-screen").style.display = 'block';
-    clearTimeout(timer);
     document.getElementById("final-score").innerHTML = document.getElementById("time").textContent;
+}
+
+function storeScore(){
+    localStorage.setItem("score", document.getElementById("time").textContent);
+    localStorage.setItem("initial", document.getElementById("initials").value);
+    window.location.href = "highscores.html";
+    highScoreLineValue = localStorage.getItem("intial");
+    highScoreLineList = document.createElement('li');
+    highScoreLineList.appendChild(document.createTextNode(highScoreLineValue));
+    document.getElementById("highscores").appendChild(highScoreLineList);
+
+
 }
