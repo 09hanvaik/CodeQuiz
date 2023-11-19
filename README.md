@@ -2,6 +2,10 @@
 
 MCQs from: https://www.interviewbit.com/css-mcq/
 Quiz tutorial: https://simplestepscode.com/javascript-quiz-tutorial/
+tect/innerHTML content: https://www.w3schools.com/jsref/prop_node_textcontent.asp
+timeout function: https://www.w3schools.com/js/js_timing.asp
+get current id: https://stackoverflow.com/questions/4825295/onclick-to-get-the-id-of-the-clicked-button
+
 
 Pseudo code:
 

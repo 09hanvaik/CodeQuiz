@@ -22,15 +22,15 @@
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-        <button id="start" onclick="showQuestions()">Start Quiz</button>
+        <button id="start" onclick="showQuestions(),loopQuestions()">Start Quiz</button>
       </div>
 
       <div id="questionsContainer" class="hide">
         <h1 id ="question"></h1>
-        <button id="optionOne"></button>
-        <button id="optionTwo"></button>
-        <button id="optionThree"></button>
-        <button id="optionFour"></button>
+        <li><button id="optionOne" class="answer" onclick="checkAnswer(this.id)"></button></li>
+        <li><button id="optionTwo" onclick="checkAnswer(this.id)"></button></li>
+        <li><button id="optionThree" onclick="checkAnswer(this.id)"></button></li>
+        <li><button id="optionFour" onclick="checkAnswer(this.id)"></button></li>
       </div>
 
       <div id="end-screen" class="hide">
