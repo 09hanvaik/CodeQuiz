@@ -86,13 +86,20 @@ function showScore(){
 }
 
 function storeScore(){
+    currentScores = JSON.parse(localStorage.getItem("score"));
+    currentInitials = JSON.parse(localStorage.getItem("initial"));
+    
     localStorage.setItem("score", document.getElementById("time").textContent);
     localStorage.setItem("initial", document.getElementById("initials").value);
+    
     window.location.href = "highscores.html";
-    highScoreLineValue = localStorage.getItem("intial");
-    highScoreLineList = document.createElement('li');
-    highScoreLineList.appendChild(document.createTextNode(highScoreLineValue));
-    document.getElementById("highscores").appendChild(highScoreLineList);
-
-
 }
+
+
+
+    if(existingEntries == null){ existingEntries = []};
+
+    localStorage.setItem("entry", JSON.stringify(entry));
+    // Save allEntries back to local storage
+    existingEntries.push(entry);
+    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
