@@ -1,5 +1,4 @@
 # CodeQuiz
-# Hansal's Portfolio
 
 ## Description
 This project mainly uses Javascript alongside HTML and CSS to present the user with a multiple choice quiz. 
@@ -35,7 +34,7 @@ THEN I can save my initials and score
 https://09hanvaik.github.io/HansalsPortfolio/
 
 ## Screenshot of site
-![Screenshot of my site]()
+![Screenshot of my site](quiz.jpg)
 
 ## Installation
 
