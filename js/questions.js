@@ -8,6 +8,21 @@ var questionBank = [
         Question: "How can we change the background color of an element in CSS?",
         Answers: [".colour = yellow", "#colour", "colour", "background colour"],
         CorrectAnswer: "background colour"
+    },
+    {
+        Question: "What are the valid ways CSS can be written in?",
+        Answers: ["Inline", "External", "Internal CSS", "All of the above"],
+        CorrectAnswer: "All of the above"
+    },
+    {
+        Question: "What type of CSS is generally recommended for designing large web pages?",
+        Answers: ["Inline", "External", "Internal CSS", "All of the above"],
+        CorrectAnswer: "External"
+    },
+    {
+        Question: "Can negative calues be allowed in padding property?",
+        Answers: ["Yes", "No", "Depends on property", "Only inline"],
+        CorrectAnswer: "No"
     }
 
 ];
