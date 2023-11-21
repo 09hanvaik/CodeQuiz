@@ -1,12 +1,21 @@
 //Retrieve information from Local Storage and write to list on page load.
 document.addEventListener("DOMContentLoaded", function() {
+
         document.getElementById("highscores").style.display = 'block';
-        highScoreInitial = localStorage.getItem("initial");
-        highScoreValue = localStorage.getItem("score");
-        NameScore = String(highScoreInitial+ " - " +highScoreValue);
-        highScoreLineList = document.createElement('li');
-        highScoreLineList.appendChild(document.createTextNode(NameScore));
-        document.getElementById("highscores").appendChild(highScoreLineList)
+        
+        highScoreInitial = JSON.parse(localStorage.getItem("initial"));
+        highScoreValue = JSON.parse(localStorage.getItem("score"));
+        console.log(localStorage)
+        console.log(typeof(highScoreInitial))
+
+        if(highScoreInitial){
+          for (var i = 0; i<highScoreInitial.length; i++){
+            NameScore = String(highScoreInitial[i]+ " - " +highScoreValue[i]);
+            highScoreLineList = document.createElement('li');
+            highScoreLineList.appendChild(document.createTextNode(NameScore));
+            document.getElementById("highscores").appendChild(highScoreLineList);
+          };
+        }
 
   });
 

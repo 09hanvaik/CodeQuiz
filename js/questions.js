@@ -85,21 +85,29 @@ function showScore(){
     document.getElementById("final-score").innerHTML = document.getElementById("time").textContent;
 }
 
+
 function storeScore(){
-    currentScores = JSON.parse(localStorage.getItem("score"));
-    currentInitials = JSON.parse(localStorage.getItem("initial"));
-    
-    localStorage.setItem("score", document.getElementById("time").textContent);
-    localStorage.setItem("initial", document.getElementById("initials").value);
-    
-    window.location.href = "highscores.html";
+    //Intialise empty arrays to store local storage items and new items to push into highscore.
+    currentInitials = [];
+    currentScores = [];
+
+    //If both objects in storage are not null
+    if (localStorage.getItem("initial") && localStorage.getItem("score")){
+        //Then for each item in storage, push into above arrays as individual elements.
+        for (var i = 0; i<JSON.parse(localStorage.getItem("score")).length; i++){
+            currentScores.push(JSON.parse(localStorage.getItem("score"))[i]);
+            currentInitials.push(JSON.parse(localStorage.getItem("initial"))[i]);
+        }
+
+    }
+    //If user input is not null then...
+    if (document.getElementById("initials").value){
+    currentScores.push(document.getElementById("time").textContent); //push curent user score into array
+    currentInitials.push(document.getElementById("initials").value); //push curent user name into array
+    localStorage.setItem("score", JSON.stringify(currentScores)); //push scores array into storage
+    localStorage.setItem("initial", JSON.stringify(currentInitials)); //push names array into storage
+    window.location.href = "highscores.html"; //go to highscore page
+    }
+
+
 }
-
-
-
-    if(existingEntries == null){ existingEntries = []};
-
-    localStorage.setItem("entry", JSON.stringify(entry));
-    // Save allEntries back to local storage
-    existingEntries.push(entry);
-    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
