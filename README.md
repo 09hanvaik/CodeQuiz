@@ -31,7 +31,7 @@ WHEN the game is over
 THEN I can save my initials and score
 
 ## Link to published site
-https://09hanvaik.github.io/HansalsPortfolio/
+https://09hanvaik.github.io/CodeQuiz/index.html
 
 ## Screenshot of site
 ![Screenshot of my site](quiz.jpg)
