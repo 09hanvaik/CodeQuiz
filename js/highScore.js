@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
         
         highScoreInitial = JSON.parse(localStorage.getItem("initial"));
         highScoreValue = JSON.parse(localStorage.getItem("score"));
-        console.log(localStorage)
-        console.log(typeof(highScoreInitial))
 
         if(highScoreInitial){
           for (var i = 0; i<highScoreInitial.length; i++){
